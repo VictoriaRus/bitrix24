@@ -1,0 +1,16 @@
+{
+    "name": "vika/task1",
+    "description": "task with curl and sdk",
+    "authors": [
+        {
+            "name": "Вика",
+            "email": "ruseckaya@cmit.ru"
+        }
+    ],
+    "require": {
+        "bitrix24/b24phpsdk": "dev-dev"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    }
+}
