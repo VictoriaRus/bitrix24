@@ -1,0 +1,67 @@
+GET https://{{host}}/rest/1/{{webhook-crm}}/crm.contact.list
+Content-Type: application/json
+
+{}
+
+###
+
+POST https://{{host}}/rest/1/{{webhook-crm}}/crm.contact.add
+Content-Type: application/json
+
+{
+  "FIELDS": {
+    "NAME": "John",
+    "SECOND_NAME": "Doe",
+    "LAST_NAME": "Smith",
+    "BIRTHDATE": "11.11.2001",
+    "TYPE_ID": "PARTNER",
+    "SOURCE_ID": "WEB",
+    "SOURCE_DESCRIPTION": "*Additional information about the source*",
+    "POST": "Administrator",
+    "COMMENTS": "**put_comment_here**",
+    "OPENED": "Y",
+    "EXPORT": "N",
+    "ASSIGNED_BY_ID": 6,
+    "COMPANY_ID": 12,
+    "EMAIL": [
+      {
+        "VALUE": "john@example.mailing",
+        "VALUE_TYPE": "MAILING"
+      },
+      {
+        "VALUE": "john@example.work",
+        "VALUE_TYPE": "WORK"
+      }
+    ]
+  }
+}
+
+###
+
+GET https://{{host}}/rest/1/{{webhook-task}}/tasks.task.list
+Content-Type: application/json
+
+{}
+
+###
+
+POST https://{{host}}/rest/1/{{webhook-task}}/tasks.task.add
+Content-Type: application/json
+
+{
+	"fields": {
+		"TITLE":"Нужно сделать домашнее задание",
+		"RESPONSIBLE_ID" : 1
+	}
+}
+
+###
+
+POST https://{{host}}/rest/1/{{webhook-task}}/user.add
+Content-Type: application/json
+
+{
+	"EMAIL": "newuser88@example.com",
+	"MESSAGE_TEXT": "Заходи к нам!",
+	"UF_DEPARTMENT": [1]
+}
