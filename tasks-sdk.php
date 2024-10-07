@@ -13,10 +13,13 @@ declare(strict_types=1);
 use Bitrix24\SDK\Services\ServiceBuilderFactory;
 
 require_once 'vendor/autoload.php';
+require_once './logger.php';
+
+$webhookUrl = 'https://b24-kjhrrq.bitrix24.by/rest/1/2tm20nh3vfysrwly/';
 
 /***** Tasks */
 try {
-    $b24ServiceTasks = ServiceBuilderFactory::createServiceBuilderFromWebhook('https://b24-kjhrrq.bitrix24.by/rest/1/2tm20nh3vfysrwly/');
+    $b24ServiceTasks = ServiceBuilderFactory::createServiceBuilderFromWebhook($webhookUrl );
     /** Получить список задач*/
     var_dump($b24ServiceTasks->core->call('tasks.task.list')->getResponseData()->getResult());
 
@@ -36,6 +39,7 @@ try {
         "UF_DEPARTMENT" => [1]
     )));
 } catch (InvalidArgumentException $exception) {
+    $logger->error('Error', ["Запрос" => "Не работает"]);
     print ('ERROR IN CONFIGURATION OR CALL ARGS: ' . $exception->getMessage());
     print ($exception::class);
     print ($exception->getTraceAsString());
